@@ -49,8 +49,9 @@ a:hover {
 }
 
 .card-heading {
-  padding: 16px;
-  color: white;
+  padding: 24px;
+  color: transparent;
+  
 }
 
 .field-line, .button-line {
@@ -144,4 +145,78 @@ a:hover {
 
 .text-left {
   text-align: left;
+}
+a:hover { 
+    background-color: yellow;
+}
+
+
+.form-signin {
+  	margin: auto;
+  	height: 620px;
+	padding:68px 0 0 0;
+  	/*background-color: #ffffff;*/
+ 	width: 350px;
+	/*background-color: white;*/
+ 	background: url("../images/panel-b-g.png") no-repeat center;
+	background-size: 360px auto;
+	 position: relative;
+	 text-align: center;
+}
+.form-signin:after{
+	content: '';
+	position: absolute;
+	top:17%;
+	left: 50%;
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin-left: -50px;
+	background: url("../images/user-icon.png") no-repeat center;
+	background-size: 100px;
+}
+
+.line{
+  text-align: center;
+  width: 500px;
+  height: 400px;
+  margin-left: 5%;
+  
+}
+
+.radar{
+  text-align: center;
+  width: 500px;
+  height: 400px;
+  margin-left: 5%;
+  
+}
+
+.polar{
+  text-align: center;
+  width: 500px;
+  height: 400px;
+  margin-left: 5%;
+  
+}
+
+.mixed{
+  text-align: center;
+  width: 500px;
+  height: 400px;
+  margin-left: 5%;
+  
+}
+ 
+ .randomizedLine{
+  text-align: center;
+  width: 500px;
+  height: 400px;
+  margin-left: 5%;
+  
+}
+
+.footer{
+
+ text-align: center
 }

@@ -18,6 +18,13 @@ import Barchart from './components/Barchart.jsx';
 import Footer from './containers/Footer.jsx';
 import SimpleMap from './components/SimpleMap.jsx';
 
+
+import Mixed from './components/Mixed.jsx';
+import Polar from './components/Polar.jsx';
+import Radar from './components/Radar.jsx';
+import Line from './components/Line.jsx';
+import RandomizedLine from './components/RandomizedLine.jsx';
+
 // remove tap delay, essential for MaterialUI to work properly
 injectTapEventPlugin();
 /*
@@ -32,13 +39,18 @@ ReactDom.render((
       <Route path="/" component={LoginPage}/>
       <Route path="/login" component={LoginPage}/>
     <Route path="/dashdb" component={DashB} >
-      <IndexRoute  component={Pie}/> 
+      <IndexRoute  component={Mixed}/> 
       <Route path="/pie" component={Pie}/>
       <Route path="/bubble" component={Bubble}/>
       <Route path="/doughnut" component={Doughnut}/>
-      <Route path="/bar" component={Barchart}/>
+      <Route path="/bar" component={BarPage}/>
       <Route path="/map" component={SimpleMap}/>
       
+      <Route path="/mixed" component={Mixed}/>
+      <Route path="/polar" component={Polar}/>
+      <Route path="/radar" component={Radar}/>
+      <Route path="/line" component={Line}/>
+      <Route path="/rline" component={RandomizedLine}/>
     </Route>
   </Router>
   </MuiThemeProvider>), document.getElementById('header'));

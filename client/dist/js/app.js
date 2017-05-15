@@ -120,6 +120,26 @@
 
 	var _SimpleMap2 = _interopRequireDefault(_SimpleMap);
 
+	var _Mixed = __webpack_require__(748);
+
+	var _Mixed2 = _interopRequireDefault(_Mixed);
+
+	var _Polar = __webpack_require__(749);
+
+	var _Polar2 = _interopRequireDefault(_Polar);
+
+	var _Radar = __webpack_require__(750);
+
+	var _Radar2 = _interopRequireDefault(_Radar);
+
+	var _Line = __webpack_require__(751);
+
+	var _Line2 = _interopRequireDefault(_Line);
+
+	var _RandomizedLine = __webpack_require__(752);
+
+	var _RandomizedLine2 = _interopRequireDefault(_RandomizedLine);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// remove tap delay, essential for MaterialUI to work properly
@@ -141,12 +161,17 @@
 	    _react2.default.createElement(
 	      _reactRouter.Route,
 	      { path: '/dashdb', component: _DashB2.default },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Pie2.default }),
+	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Mixed2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/pie', component: _Pie2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/bubble', component: _Bubble2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: '/doughnut', component: _Doughnut2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/bar', component: _Barchart2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: '/map', component: _SimpleMap2.default })
+	      _react2.default.createElement(_reactRouter.Route, { path: '/bar', component: _BarPage2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/map', component: _SimpleMap2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/mixed', component: _Mixed2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/polar', component: _Polar2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/radar', component: _Radar2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/line', component: _Line2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: '/rline', component: _RandomizedLine2.default })
 	    )
 	  )
 	), document.getElementById('header'));
@@ -42224,7 +42249,9 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var style = {
-	  margin: 12
+	  margin: 12,
+	  width: 256,
+	  height: 110
 	};
 
 	var LoginForm = function LoginForm(_ref) {
@@ -42240,11 +42267,11 @@
 	      { className: 'divStyle' },
 	      _react2.default.createElement(
 	        'form',
-	        { action: '/', onSubmit: onSubmit },
+	        { action: '/', onSubmit: onSubmit, className: 'form-signin ' },
 	        _react2.default.createElement(
 	          'h2',
 	          { className: 'card-heading' },
-	          'Login'
+	          ' Log in'
 	        ),
 	        errors.summary && _react2.default.createElement(
 	          'p',
@@ -42260,6 +42287,7 @@
 	            errorText: errors.email,
 	            onChange: onChange,
 	            value: user.email
+
 	          })
 	        ),
 	        _react2.default.createElement(
@@ -85344,7 +85372,6 @@
 	                    'div',
 	                    { id: 'header' },
 	                    _react2.default.createElement(_AppBar2.default, {
-
 	                        title: 'Sample Charts Dashboard',
 	                        onLeftIconButtonTouchTap: this.toggleNavigation,
 	                        iconElementRight: _react2.default.createElement(
@@ -85430,6 +85457,31 @@
 	                                    _reactRouter.Link,
 	                                    { to: '/pie', onTouchTap: this.toggleNavigation },
 	                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Pie Chart', style: font_style })
+	                                ),
+	                                _react2.default.createElement(
+	                                    _reactRouter.Link,
+	                                    { to: '/line', onTouchTap: this.toggleNavigation },
+	                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Line', style: font_style })
+	                                ),
+	                                _react2.default.createElement(
+	                                    _reactRouter.Link,
+	                                    { to: '/radar', onTouchTap: this.toggleNavigation },
+	                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Radar', style: font_style })
+	                                ),
+	                                _react2.default.createElement(
+	                                    _reactRouter.Link,
+	                                    { to: '/polar', onTouchTap: this.toggleNavigation },
+	                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Polar', style: font_style })
+	                                ),
+	                                _react2.default.createElement(
+	                                    _reactRouter.Link,
+	                                    { to: '/mixed', onTouchTap: this.toggleNavigation },
+	                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Mixed', style: font_style })
+	                                ),
+	                                _react2.default.createElement(
+	                                    _reactRouter.Link,
+	                                    { to: '/rline', onTouchTap: this.toggleNavigation },
+	                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Random Animated Line', style: font_style })
 	                                ),
 	                                _react2.default.createElement(
 	                                    _reactRouter.Link,
@@ -86797,7 +86849,7 @@
 	      console.log("DID Mount");
 	      _axios2.default.get("http://codepen.io/jobs.json").then(function (result) {
 	        _this2.setState({ data: result.data.jobs["0"].company_name, months: result.data.jobs["0"].term });
-	        // console.log(result);
+	        console.log(result);
 	        //     const res=result.map(function (name) {
 	        //     return 'Hello, ' + name.company_name;
 	        // });
@@ -86815,7 +86867,7 @@
 	    value: function render() {
 	      var data1 = [65, 59, 80, 81, 56, 55, 40];
 	      var chatdata = {
-	        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+	        labels: this.state.data,
 	        datasets: [{
 	          label: 'My First dataset',
 	          backgroundColor: 'rgba(255,99,132,0.2)',
@@ -86830,6 +86882,11 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'bar' },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          'Bar Chart Example'
+	        ),
 	        _react2.default.createElement(_reactChartjs.Bar, {
 	          data: chatdata,
 	          width: 100,
@@ -86896,12 +86953,7 @@
 	  return _react2.default.createElement(
 	    'div',
 	    null,
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'top-bar' },
-	      _react2.default.createElement('div', { className: 'top-bar-left' }),
-	      _react2.default.createElement('div', { className: 'top-bar-right' })
-	    )
+	    _react2.default.createElement('div', { className: 'footer' })
 	  );
 	};
 
@@ -90008,6 +90060,384 @@
 	  addResizeListener: addResizeListener,
 	  removeResizeListener: removeResizeListener
 	};
+
+/***/ }),
+/* 748 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(540);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var data = {
+	  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+	  datasets: [{
+	    label: 'Sales',
+	    type: 'line',
+	    data: [51, 65, 40, 49, 60, 37, 40],
+	    fill: false,
+	    borderColor: '#EC932F',
+	    backgroundColor: '#EC932F',
+	    pointBorderColor: '#EC932F',
+	    pointBackgroundColor: '#EC932F',
+	    pointHoverBackgroundColor: '#EC932F',
+	    pointHoverBorderColor: '#EC932F',
+	    yAxisID: 'y-axis-2'
+	  }, {
+	    type: 'bar',
+	    label: 'Visitor',
+	    data: [200, 185, 590, 621, 250, 400, 95],
+	    fill: false,
+	    backgroundColor: '#71B37C',
+	    borderColor: '#71B37C',
+	    hoverBackgroundColor: '#71B37C',
+	    hoverBorderColor: '#71B37C',
+	    yAxisID: 'y-axis-1'
+	  }]
+	};
+
+	var options = {
+	  responsive: true,
+	  tooltips: {
+	    mode: 'label'
+	  },
+	  elements: {
+	    line: {
+	      fill: false
+	    }
+	  },
+	  scales: {
+	    xAxes: [{
+	      display: true,
+	      gridLines: {
+	        display: false
+	      },
+	      labels: {
+	        show: true
+	      }
+	    }],
+	    yAxes: [{
+	      type: 'linear',
+	      display: true,
+	      position: 'left',
+	      id: 'y-axis-1',
+	      gridLines: {
+	        display: false
+	      },
+	      labels: {
+	        show: true
+	      }
+	    }, {
+	      type: 'linear',
+	      display: true,
+	      position: 'right',
+	      id: 'y-axis-2',
+	      gridLines: {
+	        display: false
+	      },
+	      labels: {
+	        show: true
+	      }
+	    }]
+	  }
+	};
+
+	var plugins = [{
+	  afterDraw: function afterDraw(chartInstance, easing) {
+	    var ctx = chartInstance.chart.ctx;
+	    ctx.fillText("This text drawn by a plugin", 100, 100);
+	  }
+	}];
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'MixExample',
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'mixed' },
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Mixed data Example'
+	      ),
+	      _react2.default.createElement(_reactChartjs.Bar, {
+	        data: data,
+	        options: options,
+	        plugins: plugins
+	      })
+	    );
+	  }
+	});
+
+/***/ }),
+/* 749 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(540);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var data = {
+	  datasets: [{
+	    data: [11, 16, 7, 3, 14],
+	    backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'],
+	    label: 'My dataset' // for legend
+	  }],
+	  labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue']
+	};
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'PolarExample',
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'polar' },
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Polar Example'
+	      ),
+	      _react2.default.createElement(_reactChartjs.Polar, { data: data })
+	    );
+	  }
+	});
+
+/***/ }),
+/* 750 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(540);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var data = {
+	  labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+	  datasets: [{
+	    label: 'My First dataset',
+	    backgroundColor: 'rgba(179,181,198,0.2)',
+	    borderColor: 'rgba(179,181,198,1)',
+	    pointBackgroundColor: 'rgba(179,181,198,1)',
+	    pointBorderColor: '#fff',
+	    pointHoverBackgroundColor: '#fff',
+	    pointHoverBorderColor: 'rgba(179,181,198,1)',
+	    data: [65, 59, 90, 81, 56, 55, 40]
+	  }, {
+	    label: 'My Second dataset',
+	    backgroundColor: 'rgba(255,99,132,0.2)',
+	    borderColor: 'rgba(255,99,132,1)',
+	    pointBackgroundColor: 'rgba(255,99,132,1)',
+	    pointBorderColor: '#fff',
+	    pointHoverBackgroundColor: '#fff',
+	    pointHoverBorderColor: 'rgba(255,99,132,1)',
+	    data: [28, 48, 40, 19, 96, 27, 100]
+	  }]
+	};
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'RadarExample',
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'radar' },
+	      '>',
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Radar Example'
+	      ),
+	      _react2.default.createElement(_reactChartjs.Radar, { data: data })
+	    );
+	  }
+	});
+
+/***/ }),
+/* 751 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(540);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var data = {
+	  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+	  datasets: [{
+	    label: 'My First dataset',
+	    fill: false,
+	    lineTension: 0.1,
+	    backgroundColor: 'rgba(75,192,192,0.4)',
+	    borderColor: 'rgba(75,192,192,1)',
+	    borderCapStyle: 'butt',
+	    borderDash: [],
+	    borderDashOffset: 0.0,
+	    borderJoinStyle: 'miter',
+	    pointBorderColor: 'rgba(75,192,192,1)',
+	    pointBackgroundColor: '#fff',
+	    pointBorderWidth: 1,
+	    pointHoverRadius: 5,
+	    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+	    pointHoverBorderColor: 'rgba(220,220,220,1)',
+	    pointHoverBorderWidth: 2,
+	    pointRadius: 1,
+	    pointHitRadius: 10,
+	    data: [65, 59, 80, 81, 56, 55, 40]
+	  }]
+	};
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'LineExample',
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'line' },
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Line Example'
+	      ),
+	      _react2.default.createElement(_reactChartjs.Line, { data: data })
+	    );
+	  }
+	});
+
+/***/ }),
+/* 752 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactChartjs = __webpack_require__(540);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var initialState = {
+	  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+	  datasets: [{
+	    label: 'My First dataset',
+	    fill: false,
+	    lineTension: 0.1,
+	    backgroundColor: 'rgba(75,192,192,0.4)',
+	    borderColor: 'rgba(75,192,192,1)',
+	    borderCapStyle: 'butt',
+	    borderDash: [],
+	    borderDashOffset: 0.0,
+	    borderJoinStyle: 'miter',
+	    pointBorderColor: 'rgba(75,192,192,1)',
+	    pointBackgroundColor: '#fff',
+	    pointBorderWidth: 1,
+	    pointHoverRadius: 5,
+	    pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+	    pointHoverBorderColor: 'rgba(220,220,220,1)',
+	    pointHoverBorderWidth: 2,
+	    pointRadius: 1,
+	    pointHitRadius: 10,
+	    data: [65, 59, 80, 81, 56, 55, 40]
+	  }]
+	};
+
+	var Graph = _react2.default.createClass({
+	  displayName: 'Graph',
+	  componentWillMount: function componentWillMount() {
+	    this.setState(initialState);
+	  },
+	  componentDidMount: function componentDidMount() {
+
+	    var _this = this;
+
+	    setInterval(function () {
+	      var oldDataSet = _this.state.datasets[0];
+	      var newData = [];
+
+	      for (var x = 0; x < _this.state.labels.length; x++) {
+	        newData.push(Math.floor(Math.random() * 100));
+	      }
+
+	      // var newDataSet = {
+	      // 	...oldDataSet
+	      // };
+
+	      // newDataSet.data = newData;
+
+	      // var newState = {
+	      // 	...initialState,
+	      // 	datasets: [newDataSet]
+	      // };
+
+	      _this.setState(newState);
+	    }, 5000);
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(_reactChartjs.Line, { data: this.state });
+	  }
+	});
+
+	exports.default = _react2.default.createClass({
+	  displayName: 'RandomizedDataLineExample',
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'randomizedLine' },
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'Random Animated Line Example'
+	      ),
+	      _react2.default.createElement(Graph, null)
+	    );
+	  }
+	});
 
 /***/ })
 /******/ ]);

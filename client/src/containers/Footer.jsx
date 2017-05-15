@@ -15,16 +15,13 @@ const Main = () => (
 
 const Footer = ({ children }) => (
   <div>
-    <div className="top-bar">
-      <div className="top-bar-left">
+    
+      <div className="footer">
+       {/*<p> copy Rights Reseved @2017 </p>*/}
        </div>
-
-      <div className="top-bar-right">
-             
-      </div>
+    
    </div>
-
-  </div>
+  
 );
 
 

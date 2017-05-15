@@ -21,6 +21,8 @@ import Subheader from 'material-ui/Subheader';
 import Toggle from 'material-ui/Toggle';
 import {List, ListItem} from 'material-ui/List';
 import MobileTearSheet from './MobileTearSheet';
+
+
 import {
     blue300,
     indigo900,
@@ -101,7 +103,6 @@ class DashB extends React.Component {
             <div id="main">
                 <div id="header">
                 <AppBar
-                   
                     title="Sample Charts Dashboard"
                     onLeftIconButtonTouchTap={this.toggleNavigation}
                     iconElementRight={
@@ -112,7 +113,7 @@ class DashB extends React.Component {
                                 badgeStyle={{ top: 10, right: 10 }}
                             >
                                 <IconButton tooltip="Notifications">
-                                    <NotificationsIcon />
+                                <NotificationsIcon />
                                 </IconButton>
                             </Badge>
                             <IconMenu
@@ -164,25 +165,41 @@ class DashB extends React.Component {
                     <ListItem primaryText="Pie Chart" style={font_style} />
                 </Link>
 
-                    <Link to={'/map'} onTouchTap={this.toggleNavigation} >
-                    <ListItem primaryText="Map" style={font_style} />
+
+
+                    <Link to={'/line'} onTouchTap={this.toggleNavigation} >
+                    <ListItem primaryText="Line" style={font_style} />
                 </Link>  
       
+                <Link to={'/radar'} onTouchTap={this.toggleNavigation} >
+                    <ListItem primaryText="Radar" style={font_style} />
+                </Link>  
+
+                 <Link to={'/polar'} onTouchTap={this.toggleNavigation} >
+                    <ListItem primaryText="Polar" style={font_style} />
+                </Link>  
+
+                 <Link to={'/mixed'} onTouchTap={this.toggleNavigation} >
+                    <ListItem primaryText="Mixed" style={font_style} />
+                </Link>  
+                <Link to={'/rline'} onTouchTap={this.toggleNavigation} >
+                    <ListItem primaryText="Random Animated Line" style={font_style} />
+                </Link>  
+                 <Link to={'/map'} onTouchTap={this.toggleNavigation} >
+                    <ListItem primaryText="Map" style={font_style} />
+                </Link>  
                </List>
         </MobileTearSheet>
       </div>
                 
             </div>
             <div className="page-content">
-                
                    {this.props.children}
             </div>
-
         <div id="bottom">
-            
+          
         </div>
-
-            </div>
+         </div>
         );
     }
 }

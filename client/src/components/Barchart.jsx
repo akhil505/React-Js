@@ -29,7 +29,7 @@ componentDidMount(){
         .get("http://codepen.io/jobs.json")
         .then(result =>     {
             this.setState({data: result.data.jobs["0"].company_name,months: result.data.jobs["0"].term});
-          // console.log(result);
+           console.log(result);
         //     const res=result.map(function (name) {
         //     return 'Hello, ' + name.company_name;
         // });
@@ -46,7 +46,7 @@ componentDidMount(){
 render() {
 const data1=[65, 59, 80, 81, 56, 55, 40];
  const chatdata = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  labels: this.state.data,
   datasets: [
     {
       label: 'My First dataset',
@@ -61,8 +61,8 @@ const data1=[65, 59, 80, 81, 56, 55, 40];
 };
     
     return <div className="bar">
-      
-        <Bar
+            <h2>Bar Chart Example</h2>
+          <Bar
           data={chatdata}
           width={100}
           height={50}

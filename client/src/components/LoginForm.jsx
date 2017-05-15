@@ -12,7 +12,9 @@ import done from 'material-ui/svg-icons/action/done';
 
 const style = {
   margin: 12,
-};
+  width: 256,
+    height: 110,
+    };
 
 const LoginForm = ({
   onSubmit,
@@ -22,8 +24,8 @@ const LoginForm = ({
 }) => (
 <div>
   <Card className="divStyle">
-    <form action="/" onSubmit={onSubmit}  >
-      <h2 className="card-heading">Login</h2>
+    <form action="/" onSubmit={onSubmit} className="form-signin " >
+      <h2 className="card-heading"> Log in</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
@@ -34,6 +36,7 @@ const LoginForm = ({
           errorText={errors.email}
           onChange={onChange}
           value={user.email}
+          
         />
       </div>
 
